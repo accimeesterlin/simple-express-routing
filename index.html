@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+
+<form action="/signup" method="POST">
+    <input type="text" name="username"/>
+    <input type="text" name="status"/>
+    <button>Send Data</button>
+</form>
+
+<!--<button>Send Data as well</button>-->
+
+<script>
+    let user = {
+        message: 'I am still alive'
+    };
+
+    $('button').on('click', function () {
+        // Using Ajax
+        $.post('/signup', user, (response) => {
+            console.log("Message back from the server: ", response);
+        });
+
+
+        // Commonly used ajax
+        $.ajax({
+            url:'/signup',
+            method:'POST',
+            data:user
+        }).then((data) => {
+            console.log("Message back from the server: ", data);
+        });
+    });
+
+
+</script>
+</body>
+</html>
